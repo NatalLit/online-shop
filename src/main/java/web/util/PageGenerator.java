@@ -13,9 +13,7 @@ import java.util.Map;
 
 public class PageGenerator {
 
-    //private static final URL RESOURCES_PATH = PageGenerator.class.getClassLoader().getResource("src/main/resources/template");
-
-    private static final String RESOURCES_PATH = "src/template";
+    private static final String RESOURCES_PATH = "src/main/resources/template";
 
     private static final Configuration cfg = new Configuration();
 

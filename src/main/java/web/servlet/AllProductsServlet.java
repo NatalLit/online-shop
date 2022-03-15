@@ -1,4 +1,4 @@
-package web;
+package web.servlet;
 
 import entity.Product;
 import service.ProductService;
@@ -29,9 +29,11 @@ public class AllProductsServlet extends HttpServlet {
         pageVariables.put("products", products);
         String page = PageGenerator.getPage("products.html", pageVariables);
 
+        response.setStatus(HttpServletResponse.SC_OK);
+
         response.getWriter().println(page);
 
-        response.setStatus(HttpServletResponse.SC_OK);
+
 
     }
 
