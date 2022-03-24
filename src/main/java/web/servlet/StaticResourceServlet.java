@@ -11,12 +11,12 @@ import java.io.InputStream;
 public class StaticResourceServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) {
-        System.out.println(request.getPathInfo().replace("/", ""));
+        //System.out.println(request.getPathInfo().substring(1));
 
-        try (InputStream inputStreamScript = StaticResourceServlet.class.getClassLoader().getResourceAsStream(request.getPathInfo())) {
-            System.out.println(inputStreamScript);
+        try (InputStream inputStream= StaticResourceServlet.class.getClassLoader().getResourceAsStream(request.getPathInfo().substring(1))) {
+            System.out.println(inputStream);
 
-            String script = InputStreamReader.getStringFromInputStream(inputStreamScript);
+            String script = InputStreamReader.getStringFromInputStream(inputStream);
 
             response.setStatus(HttpServletResponse.SC_OK);
 

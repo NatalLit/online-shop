@@ -11,7 +11,7 @@ import java.util.List;
 
 public class JdbcProductDao implements ProductDao {
 
-    private final static ProductRowMapper PRODUCT_ROW_MAPPER = new ProductRowMapper();
+    private static final ProductRowMapper PRODUCT_ROW_MAPPER = new ProductRowMapper();
     private static final String FIND_ALL_SQL = "SELECT id, name, price, creation_date from products;";
     private static final String UPDATE_SQL = "UPDATE products SET name=?,price=? WHERE id=?";
     private static final String SAVE_SQL = "INSERT INTO products (name, price) VALUES (?,?);";

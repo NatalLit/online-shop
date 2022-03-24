@@ -15,9 +15,18 @@ public class PropertiesReader {
     public PropertiesReader() {
     }
 
-    public static String get(String key){
+    public static String get(String key) {
 
         return PROPERTIES.getProperty(key);
+    }
+
+    public static String[] getStringArray(String key) {
+        return new String[]{PROPERTIES.getProperty(key)};
+    }
+
+    public static int[] getIntArray(String key) {
+
+        return new int[]{Integer.parseInt(PROPERTIES.getProperty(key))};
     }
 
     private static void loadProperties() {

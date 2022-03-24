@@ -38,7 +38,6 @@ public class DeleteProductServlet extends HttpServlet {
         }
         Map<String, Object> pageVariables = new HashMap<>();
 
-
         String page = PageGenerator.getPage("deleteProduct.html", pageVariables);
 
         response.setStatus(HttpServletResponse.SC_OK);

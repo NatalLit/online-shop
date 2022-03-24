@@ -3,11 +3,14 @@ import dao.ConnectionManager;
 import dao.jdbc.JdbcProductDao;
 import dao.ProductDao;
 import org.flywaydb.core.Flyway;
+import org.postgresql.ds.PGSimpleDataSource;
 import service.ProductService;
 import web.servlet.*;
 import org.eclipse.jetty.server.Server;
 import org.eclipse.jetty.servlet.ServletContextHandler;
 import org.eclipse.jetty.servlet.ServletHolder;
+
+import javax.sql.DataSource;
 
 public class Starter {
     public static void main(String[] args) throws Exception {
@@ -16,6 +19,7 @@ public class Starter {
                 , PropertiesReader.get(ConnectionManager.USERNAME_KEY)
                 , PropertiesReader.get(ConnectionManager.PASSWORD_KEY)).load();
         flyway.migrate();
+
 
         ProductDao productDao = new JdbcProductDao();
 
@@ -26,7 +30,6 @@ public class Starter {
         EditProductServlet editProductServlet = new EditProductServlet(productService);
         DeleteProductServlet deleteProductServlet = new DeleteProductServlet(productService);
         StaticResourceServlet staticResourceServlet = new StaticResourceServlet();
-
 
 
         ServletContextHandler servletContextHandler = new ServletContextHandler(ServletContextHandler.SESSIONS);

@@ -1,0 +1,36 @@
+version: '3'
+
+services:
+
+  ############################
+  #  Postgres
+  ############################
+  postgres:
+    image: "postgres"
+    container_name: postgres
+    volumes:
+      - ./postgres-data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_DB=shopDB
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=password
+
+  #############################
+  #   Setup java maven backend
+  #############################
+
+#  backend:
+#    build: .
+#    container_name: backend
+#    depends_on:
+#      - postgres
+#    command: sleep 1800
+
+###################
+# Instruction
+###################
+
+# docker-compose build
+# docker-compose up
