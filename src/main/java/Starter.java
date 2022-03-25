@@ -30,14 +30,16 @@ public class Starter {
         EditProductServlet editProductServlet = new EditProductServlet(productService);
         DeleteProductServlet deleteProductServlet = new DeleteProductServlet(productService);
         StaticResourceServlet staticResourceServlet = new StaticResourceServlet();
+        LoginServlet loginServlet = new LoginServlet();
 
 
         ServletContextHandler servletContextHandler = new ServletContextHandler(ServletContextHandler.SESSIONS);
         servletContextHandler.addServlet(new ServletHolder(productsServlet), "/products");
         servletContextHandler.addServlet(new ServletHolder(addProductServlet), "/products/add");
         servletContextHandler.addServlet(new ServletHolder(editProductServlet), "/products/edit");
-        servletContextHandler.addServlet(new ServletHolder(deleteProductServlet), "/products/delete");
+        servletContextHandler.addServlet(new ServletHolder(deleteProductServlet), "/products/delete/*");
         servletContextHandler.addServlet(new ServletHolder(staticResourceServlet), "/*");
+        servletContextHandler.addServlet(new ServletHolder(loginServlet),"/login");
 
 
         Server server = new Server(8080);
