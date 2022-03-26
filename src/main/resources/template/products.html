@@ -7,13 +7,8 @@
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
           rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
           crossorigin="anonymous">
-<!--    <link rel="stylesheet" href="../css/styles.css">-->
-    <style>
-        .btn{
-            width: auto;
-            margin-left: 10px;
-        }
-    </style>
+    <link rel="stylesheet" href="../assets/css/styles.css">
+
 </head>
 <body>
 <div class="container">
@@ -23,41 +18,47 @@
             <h2>Product List</h2>
         </div>
         <div>
-        <div class="panel-body">
+            <div class="panel-body">
 
-            <table class="table table-striped">
-                <thead>
-                <tr>
-                    <th>Id</th>
-                    <th>Name</th>
-                    <th>Price</th>
-                    <th></th>
-                </tr>
-                </thead>
-                <tbody>
-                <#list products as product>
-                <tr>
-                    <td>${product.id}</td>
-                    <td>${product.name}</td>
-                    <td>${product.price}</td>
-                    <td>
-                        <div style="display: flex; justify-content: flex-end">
+                <table class="table table-striped" id="table">
+                    <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Name</th>
+                        <th>Price</th>
+                        <th></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <#list products as product>
+                    <tr>
+                        <td id="${product.id}">${product.id}</td>
+                        <td>${product.name}</td>
+                        <td>${product.price}</td>
+                        <td>
+                            <div class="actions" >
 
-                            <a class="btn btn-outline-secondary " style="display: block" href="/products/edit?id=${product.id}">Update</a>
-                            <a class="btn btn-outline-danger " style="display: block" href="/products/delete?id=${product.id}">Delete</a>
-                        </div>
-                    </td>
-                </tr>
-                </#list>
-                </tbody>
-            </table>
-            <div style="display: flex; justify-content: space-around">
-                <a href="products/add" style="width: 100%; height: 100%; display: block; margin: 0" class="btn btn-outline-primary lg">
-                    Add
-                </a>
+                                <a class="btn btn-outline-secondary "
+                                   href="/products/edit?id=${product.id}">Update</a>
+                                <a class="btn btn-outline-danger"
+                                   id="deleteBtn"
+                                   onclick="if(!(confirm('Are you sure you want to delete this product?'))) return false"
+                                   href="/products/delete?id=${product.id}">Delete
+                                </a>
+                            </div>
+                        </td>
+                    </tr>
+                    </#list>
+                    </tbody>
+                </table>
+                <div class="addButton" >
+                    <a  href="products/add"
+                       class="btn btn-outline-primary lg">
+                        Add
+                    </a>
 
+                </div>
             </div>
-        </div>
         </div>
     </div>
 </div>
